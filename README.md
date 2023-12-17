@@ -23,3 +23,26 @@
 ....
 ```
 또한 RelativeLayout을 이용하여 매우 유동적으로 레이아웃을 표현하도록 만들었습니다.
+```
+...
+ <Button
+            android:id="@+id/update_weather_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:text="날씨 정보 업데이트" />
+
+        <TextView
+            android:id="@+id/weather_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/update_weather_button"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="24dp"
+            android:textSize="24sp"
+            android:textColor="@android:color/black"
+            android:text="날씨 정보 표시될 곳" />
+...
+
+```
