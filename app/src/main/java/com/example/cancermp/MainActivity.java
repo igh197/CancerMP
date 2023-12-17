@@ -1,6 +1,8 @@
  package com.example.cancermp;
  import android.os.AsyncTask;
  import android.os.Bundle;
+ import android.view.View;
+ import android.widget.Button;
  import android.widget.TextView;
 
  import androidx.appcompat.app.AppCompatActivity;
@@ -18,10 +20,12 @@
 
  public class MainActivity extends AppCompatActivity {
 
-     private static final String OPEN_WEATHER_MAP_API_KEY = "obsF28ubfHiPWOEvt3zqYV5z85juLszlW5EfSEiIqsuRfwusEqsDiwuqdKnq2TadJCAhTg2DlsycxhbYHRtZYg%3D%3D";
-     private static final String API_URL = "obsF28ubfHiPWOEvt3zqYV5z85juLszlW5EfSEiIqsuRfwusEqsDiwuqdKnq2TadJCAhTg2DlsycxhbYHRtZYg%3D%3D" + OPEN_WEATHER_MAP_API_KEY;
+     private static final String OPEN_WEATHER_MAP_API_KEY = "11d448bfa09e351cf871884473ad8f75";
+     private static final String API_URL = "http://api.openweathermap.org/data/2.5/weather?q=Seoul&appid=" + OPEN_WEATHER_MAP_API_KEY;
+
 
      private TextView weatherTextView;
+     private Button updateWeatherButton;
 
      @Override
      protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +33,19 @@
          setContentView(R.layout.activity_main);
 
          weatherTextView = findViewById(R.id.weather_text);
+         updateWeatherButton = findViewById(R.id.update_weather_button);
 
-         // API 호출 AsyncTask 실행
-         WeatherTask task = new WeatherTask();
-         task.execute(API_URL);
+         // 버튼 클릭 리스너 등록
+         updateWeatherButton.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 // API 호출 AsyncTask 실행
+
+                 WeatherTask task = new WeatherTask();
+                 task.execute(API_URL);
+             }
+         });
      }
-
      private class WeatherTask extends AsyncTask<String, Void, String> {
 
          @Override
@@ -78,7 +89,7 @@
                  JSONObject weatherObject = weatherArray.getJSONObject(0);
 
                  String description = weatherObject.getString("description");
-                 weatherTextView.setText("날씨: " + description);
+                 weatherTextView.setText(description);
 
              } catch (JSONException e) {
                  e.printStackTrace();

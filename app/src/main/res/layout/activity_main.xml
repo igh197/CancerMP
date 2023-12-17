@@ -4,12 +4,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/weather_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="날씨 정보"
-        android:textSize="24sp"
-        android:layout_centerInParent="true"/>
 
-</RelativeLayout>
+        <Button
+            android:id="@+id/update_weather_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:text="날씨 정보 업데이트" />
+
+        <TextView
+            android:id="@+id/weather_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/update_weather_button"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="24dp"
+            android:textSize="24sp"
+            android:textColor="@android:color/black"
+            android:text="날씨 정보 표시될 곳" />
+
+    </RelativeLayout>
+
+
